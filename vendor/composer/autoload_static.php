@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit8c7365099ea1b7b10b9e82509ecdb574
 {
     public static $prefixLengthsPsr4 = array (
+        'R' => 
+        array (
+            'Routes\\' => 7,
+        ),
         'M' => 
         array (
             'Models\\' => 7,
@@ -19,6 +23,10 @@ class ComposerStaticInit8c7365099ea1b7b10b9e82509ecdb574
     );
 
     public static $prefixDirsPsr4 = array (
+        'Routes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Routes',
+        ),
         'Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Models',
@@ -35,6 +43,7 @@ class ComposerStaticInit8c7365099ea1b7b10b9e82509ecdb574
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Config\\Database' => __DIR__ . '/../..' . '/src/Config/Database.php',
         'Config\\Router' => __DIR__ . '/../..' . '/src/Config/Router.php',
         'Controllers\\Company\\CompanyController' => __DIR__ . '/../..' . '/src/Controllers/Company/CompanyController.php',
         'Controllers\\Employee\\EmployeeController' => __DIR__ . '/../..' . '/src/Controllers/Employee/EmployeeController.php',
