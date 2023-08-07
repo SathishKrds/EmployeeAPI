@@ -11,6 +11,7 @@ class JobController {
         $this->jobModel = new Job();
     }
 
+    // Function to get all job positions in a company
     public function listAllJobPositionByCompany() {
         $error = null;
     
@@ -50,6 +51,7 @@ class JobController {
         echo json_encode($response);
     }
 
+    // Function to create a job position inside a company
     public function createJobPosition() {
         try {
             $company_id = $_REQUEST['company_id'];

@@ -88,7 +88,7 @@ class Employee
         return "New employee '{$name}' onboarded!";
     }
     
-    // Function to list all employees in a same company
+    // Function to get all employees in a same company
     public function getEmployeesByCompany($company_id)
     {
         $query = "SELECT *
@@ -102,7 +102,7 @@ class Employee
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    // Function to list all employees in a same job
+    // Function to get all employees in a same job
     public function getEmployeesByJob($job_id) {
         $query = "SELECT *
                   FROM emp_employees 
@@ -115,7 +115,7 @@ class Employee
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    // Function to list all employees in a specific salary range
+    // Function to get all employees in a specific salary range
     public function getEmployeesBySalaryRange($min_salary, $max_salary) {
         $query = "SELECT *
                   FROM emp_employees 

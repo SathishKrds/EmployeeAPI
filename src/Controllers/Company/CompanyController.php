@@ -11,6 +11,7 @@ class CompanyController {
         $this->companyModel = new Company();
     }
     
+    // Function to create a new company
     public function createCompany() {
         try {
             $name = $_REQUEST['name'];
@@ -46,6 +47,7 @@ class CompanyController {
         }
     }
 
+    // Function to list all companies
     public function listCompanies() {
         try {
             $companyLists = $this->companyModel->getCompanies();

@@ -85,6 +85,7 @@ class EmployeeController {
         }
     }
 
+    // Function to list all employees in a same company
     public function listEmployeesByCompany() {
         $error = null;
     
@@ -124,6 +125,7 @@ class EmployeeController {
         echo json_encode($response);
     }
 
+    // Function to list all employees in a same job
     public function listEmployeesByJob() {
         $error = null;
     
@@ -163,6 +165,7 @@ class EmployeeController {
         echo json_encode($response);
     }
 
+    // Function to list all employees in a specific salary range
     public function listEmployeesBySalaryRange() {
         $error = null;
     

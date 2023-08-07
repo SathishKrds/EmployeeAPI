@@ -25,7 +25,7 @@ class Company
         return 'New company created!';
     }
 
-    // Function to list all companies
+    // Function to get all companies
     public function getCompanies() {
         $query = "SELECT * FROM emp_companies";
 

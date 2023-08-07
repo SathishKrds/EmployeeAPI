@@ -56,7 +56,7 @@ class Job
         return 'New job position created!';
     }
 
-    // Function to list all job positions in a company
+    // Function to get all job positions in a company
     public function getJobPositionsByCompany($companyId)
     {
         $query = "SELECT jp.*
