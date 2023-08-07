@@ -15,12 +15,16 @@ class Route
 
     public function addRoutes()
     {
-        $this->router->get('/jobPosition', 'Company/CompanyController@listAllJobPositionByCompany');
-        // $this->router->get('/employee', 'Employee/EmployeeController@listAllEmployees');
+        $this->router->get('/listAllJobPositionByCompany', 'Company/CompanyController@listAllJobPositionByCompany');
         $this->router->get('/listCompanies', 'Company/CompanyController@listCompanies');
         $this->router->post('/createCompany', 'Company/CompanyController@createCompany');
         $this->router->post('/createJobPosition', 'Company/CompanyController@createJobPosition');
         $this->router->post('/onboardEmployee', 'Employee/EmployeeController@onboardEmployee');
+        $this->router->get('/listEmployeesByCompany', 'Employee/EmployeeController@listEmployeesByCompany');
+        $this->router->get('/listEmployeesByJob', 'Employee/EmployeeController@listEmployeesByJob');
+        $this->router->get('/listEmployeesBySalaryRange', 'Employee/EmployeeController@listEmployeesBySalaryRange');
+        $this->router->post('/applyResignation', 'Employee/EmployeeController@applyResignation');
+        $this->router->post('/updateResignationStatus', 'Employee/EmployeeController@updateResignationStatus');
     }
 
     public function dispatch()
