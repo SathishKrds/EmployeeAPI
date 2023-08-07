@@ -9,11 +9,7 @@ class Employee
 
     public function __construct()
     {
-        $config = Database::getConfig();
-
-        $dsn = "mysql:host={$config['host']};dbname={$config['database']}";
-        $this->pdo = new \PDO($dsn, $config['username'], $config['password']);
-        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->pdo = Database::getConnection();
     }
 
     public function onboardEmployee($company_id, $job_id, $name, $details, $qualifications, $salary,

@@ -9,10 +9,7 @@ class Company
 
     public function __construct()
     {
-        $config = Database::getConfig();
-        $dsn = "mysql:host={$config['host']};dbname={$config['database']}";
-        $this->pdo = new \PDO($dsn, $config['username'], $config['password']);
-        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->pdo = Database::getConnection();
     }
 
     // Function to create a new company
