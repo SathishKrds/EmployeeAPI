@@ -205,35 +205,73 @@ class EmployeeController {
 
     // Function to apply for resignation
     public function applyResignation() {
-        $company_id = $_REQUEST['company_id'];
-        $employee_id = $_REQUEST['employee_id'];
+        try {
+            $company_id = $_REQUEST['company_id'];
+            $employee_id = $_REQUEST['employee_id'];
 
-        $response = [
-            'status' => 'success',
-            'status_code' => 200,
-            'message' => $this->employeeModel->applyResignation($company_id, $employee_id)
-        ];        
+            if (empty($company_id) || empty($employee_id)) {
+                throw new \Exception('Missing required parameters');
+            }
 
-        // Return the response as JSON
-        header('Content-Type: application/json');
-        echo json_encode($response);
+            $response = [
+                'status' => 'success',
+                'status_code' => 200,
+                'message' => $this->employeeModel->applyResignation($company_id, $employee_id)
+            ];        
+    
+            // Return the response as JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } catch (\Exception $e) {
+            $response = [
+                'status' => 'error',
+                'status_code' => 500,
+                'message' => $e->getMessage()
+            ];
+    
+            // Return the error response as JSON
+            header('Content-Type: application/json');
+            http_response_code($e->getCode());
+            echo json_encode($response);
+        }
     }
 
     // Function to approve or reject resignation
     public function updateResignationStatus() {
-        $company_id = $_REQUEST['company_id'];
-        $employee_id = $_REQUEST['employee_id'];
-        $status = $_REQUEST['status'];
-
-        $response = [
-            'status' => 'success',
-            'status_code' => 200,
-            'message' => $this->employeeModel->updateResignationStatus($company_id, $employee_id, $status)
-        ];        
-
-        // Return the response as JSON
-        header('Content-Type: application/json');
-        echo json_encode($response);
+        try {
+            $company_id = $_REQUEST['company_id'];
+            $employee_id = $_REQUEST['employee_id'];
+            $status = $_REQUEST['status'];
+    
+            // Check if the required parameters are missing
+            if (empty($company_id) || empty($employee_id) || empty($status)) {
+                throw new \Exception('Missing required parameters');
+            }
+    
+            $message = $this->employeeModel->updateResignationStatus($company_id, $employee_id, $status);
+    
+            $response = [
+                'status' => 'success',
+                'status_code' => 200,
+                'message' => $message
+            ];        
+    
+            // Return the response as JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } catch (\Exception $e) {
+            // Handle any exceptions here
+            $response = [
+                'status' => 'error',
+                'status_code' => 500,
+                'message' => $e->getMessage()
+            ];
+            
+            // Return the error response as JSON
+            header('Content-Type: application/json');
+            http_response_code($response['status_code']);
+            echo json_encode($response);
+        }
     }
 }
 
